@@ -22,6 +22,7 @@ LoginDialog::LoginDialog(QWidget *parent)
     this->setWindowTitle("科目一模拟考试-登陆");
     this->setWindowFlags(Qt::Dialog | Qt::WindowCloseButtonHint);
 
+
 }
 
 LoginDialog::~LoginDialog()
@@ -66,7 +67,9 @@ void LoginDialog::on_loginBtn_clicked()
                 {
                     if(code == strList.at(1))
                     {
-                        QMessageBox::information(this, "提示", "登陆成功!");
+                        //QMessageBox::information(this, "提示", "登陆成功!");
+                        file.close();
+                        done(Accepted);
                         return;
                     }
                     else
@@ -88,5 +91,11 @@ void LoginDialog::on_loginBtn_clicked()
             QMessageBox::information(this, "提示", "打开文件失败!");
         }
     }
+}
+
+
+void LoginDialog::on_cancelBtn_clicked()
+{
+    done(Rejected);
 }
 
